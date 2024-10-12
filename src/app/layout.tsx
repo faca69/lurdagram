@@ -27,7 +27,7 @@ export default function RootLayout({
             <section className="w-[290px] border-r-[1px] border-[#262626] ">
               <Sidebar />
             </section>
-            <section className="w-full p-0  ">{children}</section>
+            <section className="w-full p-0 ">{children}</section>
           </article>
         </main>
       </body>

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   CirclePlus,
   Clapperboard,
@@ -9,8 +11,10 @@ import {
 import Link from "next/link";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
+  const pathname = usePathname();
   return (
     <ol className="flex flex-col gap-3 py-2 h-full px-2 ">
       <li className="my-7">
