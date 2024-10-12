@@ -24,7 +24,7 @@ export default function RootLayout({
       >
         <main className="min-h-screen flex flex-col items-center">
           <article className="flex flex-row w-full h-screen ">
-            <section className="w-[290px] border-r-[1px] border-[#262626] ">
+            <section className="w-[290px] border-r-[1px] border-[#262626] h-screen fixed ">
               <Sidebar />
             </section>
             <section className="w-full p-0 flex justify-center">

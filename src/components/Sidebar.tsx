@@ -82,13 +82,7 @@ export default function Sidebar() {
           href={"#"}
           className="flex items-center gap-1 hover:bg-white/10 px-4 py-2 rounded-md font-medium"
         >
-          <Avatar>
-            <AvatarImage
-              className="w-8 h-8 rounded-full"
-              src="https://github.com/shadcn.png"
-            />
-            <AvatarFallback>🥶</AvatarFallback>
-          </Avatar>
+          <div className="bg-pink-300 rounded-full size-8 mr-[6px]"></div>
           Profile
         </Link>
       </li>

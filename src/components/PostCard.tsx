@@ -8,19 +8,16 @@ export default function PostCard() {
   const [isHidden, setIsHidden] = useState(true);
   const [comment, setComment] = useState("");
   const caption =
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum quibusdam, accusantium assumenda optio dicta ut perferendis reprehenderit itaque quos voluptatibus, impedit repudiandae. Reprehenderit fuga et molestiae unde. Rerum, praesentium. Officia?";
+    "Lorem ipsum dolor sit amet consectetur,damn son adipisicing elit. Laborum quibusdam, accusantium assumenda optio dicta ut perferendis reprehenderit itaque quos voluptatibus, impedit repudiandae. Reprehenderit fuga et molestiae unde. Rerum, praesentium. Officia?";
 
-  const truncatedText = caption.slice(0, 100);
+  const truncatedText = `${caption.slice(0, 100)}....`;
 
   return (
     <article className="flex flex-col max-w-[470px]">
       {/* icon, username dots */}
       <div className="flex justify-between px-1 my-3">
         <div className="flex items-center">
-          <Avatar>
-            <AvatarImage className="" width={10} height={10}></AvatarImage>
-            <AvatarFallback className="size-8">🥶</AvatarFallback>
-          </Avatar>
+          <div className="bg-pink-300 rounded-full size-8 mr-[6px]"></div>
           <p className="font-bold">username_69</p>
           <Dot className=" text-[#A8A8A8]" />
           <p className="text-[#A8A8A8]">17 h</p>
@@ -36,11 +33,11 @@ export default function PostCard() {
       {/* likes  bar */}
       <div className="flex justify-between my-3 ">
         <div className="flex items-center gap-3">
-          <Heart />
-          <MessageCircle />
+          <Heart className="hover:text-white/70 cursor-pointer" />
+          <MessageCircle className="hover:text-white/70 cursor-pointer" />
         </div>
         <div>
-          <Send />
+          <Send className="hover:text-white/70 cursor-pointer" />
         </div>
       </div>
 
@@ -49,7 +46,7 @@ export default function PostCard() {
       <div>
         <div className="max-w-[470px]">
           <span className="font-bold">{"username_69"}&nbsp;</span>
-          <span className="leading-[1]">
+          <span className="leading-[1] whitespace-normal break-words">
             {isHidden ? truncatedText : caption}
           </span>
           <span
@@ -63,21 +60,23 @@ export default function PostCard() {
 
       {/* comment */}
 
-      <p className="text-[#a3a3a3] my-2">View all 25 comments</p>
+      <p className="text-[#a3a3a3] my-2 cursor-pointer">View all 25 comments</p>
 
-      <form action="" className="flex items-center">
-        <textarea
+      <form action="" className="flex items-center gap-1">
+        <input
           placeholder="Add a comment..."
-          className="bg-transparent placeholder:text-[#a3a3a3] mb-4 border-none focus:outline-none resize-none w-full"
+          className="bg-transparent placeholder:text-[#a3a3a3] border-none focus:outline-none resize-none w-full p-0 mb-0 "
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
 
-        {!comment ? null : <button className="text-blue-400 w-10">Post</button>}
+        {!comment ? null : (
+          <button className="text-sky-400 w-10 font-medium">Post</button>
+        )}
       </form>
 
       {/* separating line */}
-      <hr className="bg-[#262626] border-t-[1px] border-[#262626] p-0 mb-20" />
+      <hr className="bg-[#262626] border-t-[1px] border-[#262626] p-0 mb-20 mt-4" />
     </article>
   );
 }
