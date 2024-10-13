@@ -1,12 +1,14 @@
 "use client";
 
+import usePostStore from "@/store/post-store";
 import { Dot, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useState } from "react";
 
 export default function PostCard() {
-  const [isHidden, setIsHidden] = useState(true);
-  const [comment, setComment] = useState("");
+  const { isHidden, toggleHidden, comment, setComment } = usePostStore();
+
+  // const [isHidden, setIsHidden] = useState(true);
+  // const [comment, setComment] = useState("");
   const caption =
     "Lorem ipsum dolor sit amet consectetur,damn son adipisicing elit. Laborum quibusdam, accusantium assumenda optio dicta ut perferendis reprehenderit itaque quos voluptatibus, impedit repudiandae. Reprehenderit fuga et molestiae unde. Rerum, praesentium. Officia?";
 
@@ -51,7 +53,7 @@ export default function PostCard() {
           </span>
           <span
             className="text-[#a3a3a3] cursor-pointer"
-            onClick={() => setIsHidden(!isHidden)}
+            onClick={toggleHidden}
           >
             &nbsp;{isHidden ? "more" : "hide"}
           </span>
