@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { loginUser as login } from "../../services/users.service";
 
 export default async function loginUser(formData: FormData) {
@@ -9,4 +10,6 @@ export default async function loginUser(formData: FormData) {
   };
 
   await login(loginData);
+
+  redirect("/");
 }

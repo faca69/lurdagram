@@ -1,8 +1,6 @@
-import { UserCreateModel } from "@/db/schemas/user.schema";
-import { create, findByUsername } from "@/repositories/users.repository";
+import { UserCreateModel } from "./../db/schemas/user.schema";
+import { create, findByUsername } from "../repositories/users.repository";
 import bcrypt from "bcrypt";
-
-// REMOVE ANY
 
 export async function getUserByUsername(username: string) {
   return findByUsername(username);
@@ -15,23 +13,23 @@ export async function loginUser({
   username: string;
   password: string;
 }) {
-  const existingUser: any = await getUserByUsername(username);
+  const existingUser = await getUserByUsername(username);
 
   if (!existingUser) {
-    throw new Error("Invalid Credentials");
+    throw new Error(`Invalid credentials for username: ${username}`);
   }
 
   const isPasswordEqual = bcrypt.compareSync(password, existingUser.password);
 
   if (!isPasswordEqual) {
-    throw new Error("Invalid Credentials");
+    throw new Error(`Invalid credentials for username: ${username}`);
   }
 
   return existingUser;
 }
 
 export async function createUser(userData: UserCreateModel) {
-  const existingUser: any = await getUserByUsername(userData.username);
+  const existingUser = await getUserByUsername(userData.username);
 
   if (existingUser) {
     throw new Error("User already exists");
