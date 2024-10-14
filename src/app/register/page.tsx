@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,12 +9,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Upload } from "lucide-react";
-import { useRef } from "react";
 import registerUser from "../actions/register.action";
 
 export default function Register() {
-  const fileInputRef = useRef<HTMLInputElement>(null);
   return (
     <div className="flex items-center justify-center min-h-screen w-full">
       <Card className="w-full h-[700px] max-w-[480px]">
@@ -58,32 +53,7 @@ export default function Register() {
                 required
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="image">Profile Picture</Label>
-              <div className="flex items-center space-x-4">
-                <div
-                  className="w-20 h-20 rounded-full bg-muted flex items-center justify-center overflow-hidden cursor-pointer"
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  <Upload className="h-8 w-8 text-muted-foreground" />
-                </div>
-                <Input
-                  id="image"
-                  name="profilePicture"
-                  type="file"
-                  accept="image/*"
-                  className="hidden"
-                  ref={fileInputRef}
-                />
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  Upload Image
-                </Button>
-              </div>
-            </div>
+
             <Button type="submit" className="w-full">
               Register
             </Button>
