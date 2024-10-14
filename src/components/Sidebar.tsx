@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { usePathname } from "next/navigation";
 
 export default function Sidebar() {

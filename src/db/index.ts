@@ -1,6 +1,7 @@
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import { posts } from "./schemas/post.schema";
+import { users } from "./schemas/user.schema";
 
 const client = postgres({
   host: "localhost",
@@ -13,6 +14,7 @@ const client = postgres({
 export const db = drizzle(client, {
   schema: {
     posts,
+    users,
   },
   logger: true,
 });
