@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import loginUser from "../actions/login.action";
+import loginUser from "../../actions/login.action";
 
 export default function Login() {
   return (

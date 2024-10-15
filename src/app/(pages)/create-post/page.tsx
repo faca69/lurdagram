@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "../../components/ui/button";
+import { Button } from "../../../components/ui/button";
 
-import { Input } from "../../components/ui/input";
-import { Label } from "../../components/ui/label";
-import { Textarea } from "../../components/ui/textarea";
+import { Input } from "../../../components/ui/input";
+import { Label } from "../../../components/ui/label";
+import { Textarea } from "../../../components/ui/textarea";
 import { ImagePlus } from "lucide-react";
 import { useEdgeStore } from "@/utils/edgestore";
-import createPost from "../actions/create-post.action";
+import createPost from "../../actions/create-post.action";
 
 export default function CreatePostPage() {
   const [file, setFile] = useState<File | null>(null);

@@ -39,6 +39,7 @@ export default function PostCard({ post }: PostCardProps) {
           fill={true}
           quality={80}
           priority={true}
+          className="object-cover"
         />
       </div>
       {/* <div className="w-[470px] h-[590px]  border-[#262626] border-[1px] rounded-sm"></div> */}
