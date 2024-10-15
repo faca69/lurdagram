@@ -5,6 +5,7 @@ import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import { EdgeStoreProvider } from "@/utils/edgestore";
 import { ReactNode } from "react";
+import Providers from "./providers";
 
 export const metadata: Metadata = {
   title: "Lurdagram",
@@ -24,18 +25,20 @@ export default function RootLayout({
           "antialiased bg-black text-white min-h-screen"
         )}
       >
-        <EdgeStoreProvider>
-          <main className="min-h-screen flex flex-col items-center">
-            <article className="flex flex-row w-full h-screen ">
-              <section className="w-[290px] border-r-[1px] border-[#262626] h-screen fixed ">
-                <Sidebar />
-              </section>
-              <section className="w-full p-0 flex justify-center">
-                {children}
-              </section>
-            </article>
-          </main>
-        </EdgeStoreProvider>
+        <Providers>
+          <EdgeStoreProvider>
+            <main className="min-h-screen flex flex-col items-center">
+              <article className="flex flex-row w-full h-screen ">
+                <section className="w-[290px] border-r-[1px] border-[#262626] h-screen fixed ">
+                  <Sidebar />
+                </section>
+                <section className="w-full p-0 flex justify-center">
+                  {children}
+                </section>
+              </article>
+            </main>
+          </EdgeStoreProvider>
+        </Providers>
       </body>
     </html>
   );
