@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import { EdgeStoreProvider } from "@/utils/edgestore";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Lurdagram",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">

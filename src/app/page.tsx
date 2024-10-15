@@ -1,15 +1,9 @@
-// import PostCard from "@/components/PostCard";
-
-// export default function Home() {
-//   return (
-//     <div>
-//       <PostCard />
-//     </div>
-//   );
-// }
-
-import { redirect } from "next/navigation";
+import PostCard from "@/components/PostCard";
 
 export default function Home() {
-  return redirect("/feed/following");
+  return (
+    <div>
+      <PostCard />
+    </div>
+  );
 }

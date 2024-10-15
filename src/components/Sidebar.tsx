@@ -69,7 +69,7 @@ export default function Sidebar() {
       </li>
       <li>
         <Link
-          href={"."}
+          href={"create-post"}
           className="flex items-center gap-3 hover:bg-white/10 px-4 py-2 rounded-md font-medium"
         >
           <CirclePlus className="size-8" />
