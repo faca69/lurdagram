@@ -1,18 +1,19 @@
 "use client";
 
+import { PostModel } from "@/db/schemas/post.schema";
 import usePostStore from "@/store/post-store";
 import { Dot, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
-import { useState } from "react";
+import Image from "next/image";
 
-export default function PostCard() {
+type PostCardProps = {
+  post: PostModel;
+};
+
+export default function PostCard({ post }: PostCardProps) {
   const { isHidden, toggleHidden, comment, setComment } = usePostStore();
 
-  // const [isHidden, setIsHidden] = useState(true);
-  // const [comment, setComment] = useState("");
-  const caption =
-    "Lorem ipsum dolor sit amet consectetur,damn son adipisicing elit. Laborum quibusdam, accusantium assumenda optio dicta ut perferendis reprehenderit itaque quos voluptatibus, impedit repudiandae. Reprehenderit fuga et molestiae unde. Rerum, praesentium. Officia?";
-
-  const truncatedText = `${caption.slice(0, 100)}....`;
+  const caption = post.caption;
+  const truncatedText = `${caption?.slice(0, 100)}....`;
 
   return (
     <article className="flex flex-col max-w-[470px]">
@@ -30,7 +31,17 @@ export default function PostCard() {
         </div>
       </div>
       {/* media */}
-      <div className="w-[470px] h-[590px]  border-[#262626] border-[1px] rounded-sm"></div>
+
+      <div className=" relative w-[470px] h-[470px] border-[#262626] border-[1px] rounded-sm">
+        <Image
+          src={post.image}
+          alt="pic"
+          fill={true}
+          quality={80}
+          priority={true}
+        />
+      </div>
+      {/* <div className="w-[470px] h-[590px]  border-[#262626] border-[1px] rounded-sm"></div> */}
 
       {/* likes  bar */}
       <div className="flex justify-between my-3 ">

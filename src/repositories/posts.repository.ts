@@ -1,8 +1,16 @@
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { db } from "../db";
 import { PostCreateModel, PostModel, posts } from "@/db/schemas/post.schema";
 
-// const find = ()
+export const find = async () => {
+  try {
+    return db.query.posts.findMany({
+      orderBy: desc(posts.createdAt),
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export const findOneById = (id: string) => {
   try {
