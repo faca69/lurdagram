@@ -11,5 +11,5 @@ export default async function loginUser(formData: FormData) {
 
   await login(loginData);
 
-  redirect("/");
+  redirect(`/${formData.get("username")}`);
 }
