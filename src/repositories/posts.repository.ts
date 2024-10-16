@@ -2,13 +2,17 @@ import { desc, eq } from "drizzle-orm";
 import { db } from "../db";
 import { PostCreateModel, PostModel, posts } from "@/db/schemas/post.schema";
 
-export const find = async () => {
+export const find = async (): Promise<PostModel[]> => {
   try {
     return db.query.posts.findMany({
       orderBy: desc(posts.createdAt),
+      with: {
+        author: true,
+      },
     });
   } catch (error) {
     console.error(error);
+    return [];
   }
 };
 

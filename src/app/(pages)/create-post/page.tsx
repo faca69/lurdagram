@@ -9,10 +9,15 @@ import { Textarea } from "../../../components/ui/textarea";
 import { ImagePlus } from "lucide-react";
 import { useEdgeStore } from "@/utils/edgestore";
 import createPost from "../../actions/create-post.action";
+import { useSession } from "next-auth/react";
 
 export default function CreatePostPage() {
+  const { data: session } = useSession();
   const [file, setFile] = useState<File | null>(null);
   const [caption, setCaption] = useState("");
+  const [authorId, setAuthorId] = useState<string | undefined>(
+    session?.user.id
+  );
   const { edgestore } = useEdgeStore();
 
   return (
@@ -35,6 +40,7 @@ export default function CreatePostPage() {
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
           />
+          <input type="hidden" name="authorId" value={setA} />
         </div>
 
         <Button
@@ -48,7 +54,7 @@ export default function CreatePostPage() {
                 file,
               });
               console.log("Upload response:", res);
-              await createPost(res.url, caption);
+              await createPost(res.url, caption, authorId);
             } else {
               console.log("Please fill all fields and select an image");
             }

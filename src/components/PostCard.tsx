@@ -1,16 +1,20 @@
 "use client";
 
-import { PostModel } from "@/db/schemas/post.schema";
+import { PostExtendedModel, PostModel } from "@/db/schemas/post.schema";
+import { formatDate } from "@/lib/format-date";
 import usePostStore from "@/store/post-store";
 import { Dot, Ellipsis, Heart, MessageCircle, Send } from "lucide-react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 
 type PostCardProps = {
-  post: PostModel;
+  post: PostExtendedModel;
 };
 
 export default function PostCard({ post }: PostCardProps) {
   const { isHidden, toggleHidden, comment, setComment } = usePostStore();
+
+  const { data: session } = useSession();
 
   const caption = post.caption;
   const truncatedText = `${caption?.slice(0, 100)}....`;
@@ -21,9 +25,9 @@ export default function PostCard({ post }: PostCardProps) {
       <div className="flex justify-between px-1 my-3">
         <div className="flex items-center">
           <div className="bg-pink-300 rounded-full size-8 mr-[6px]"></div>
-          <p className="font-bold">username_69</p>
+          <p className="font-bold">{post.author.username}</p>
           <Dot className=" text-[#A8A8A8]" />
-          <p className="text-[#A8A8A8]">17 h</p>
+          <p className="text-[#A8A8A8]">{formatDate(post.createdAt)}</p>
         </div>
 
         <div className="items-center flex">
@@ -59,7 +63,7 @@ export default function PostCard({ post }: PostCardProps) {
 
       <div>
         <div className="max-w-[470px]">
-          <span className="font-bold">{"username_69"}&nbsp;</span>
+          <span className="font-bold">{post.author.username}&nbsp;</span>
           <span className="leading-[1] whitespace-normal break-words">
             {isHidden ? truncatedText : caption}
           </span>

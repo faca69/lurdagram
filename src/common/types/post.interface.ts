@@ -1,7 +1,10 @@
+import { User } from "./user.interface";
+
 export interface Post {
   id: string;
   image: string;
   caption: string;
+  author: User;
   createdAt: string;
 }
 
